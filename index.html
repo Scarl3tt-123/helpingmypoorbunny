@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/brainmap.js/brainmap.css">
+  <style>
+    body { margin: 0; background: #111; }
+    #mindmap { width: 100vw; height: 100vh; }
+  </style>
+</head>
+
+<body>
+  <div id="mindmap"></div>
+
+  <script src="https://unpkg.com/brainmap.js/brainmap.js"></script>
+  <script>
+    const map = new MindMap('#mindmap', {
+      width: window.innerWidth,
+      height: window.innerHeight,
+      editable: true,
+      theme: 'dark'
+    });
+
+    map.setData({
+      id: 'root',
+      name: 'My Brainstorm',
+      children: [
+        { id: 'feelings', name: 'Feelings' },
+        { id: 'goals', name: 'Goals' },
+        { id: 'ideas', name: 'Ideas' }
+      ]
+    });
+  </script>
+</body>
+</html>
