@@ -1,3 +1,23 @@
+
+#addNodeBtn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding: 10px 15px;
+  background: #6a6a6a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#mapArea {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
 .node {
   position: absolute;
   padding: 12px 18px;
