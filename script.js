@@ -83,11 +83,11 @@ const nodes = [
       <p>1) think about what are you feeling</p>
       <p>2) why are you feeling this way</p>
       <p>3) what can you do to feel better</p>
-      <button onclick="showSubInfo('FeelingsMap')">Map of Feelings</button>
-      <button onclick="showSubInfo('TriggersPatterns')">Triggers & Patterns</button>
-      <button onclick="showSubInfo('ActionSteps')">Action steps</button>
-      <button onclick="showSubInfo('OppositeEmotionMap')">Opposite Emotion Map</button>
-      <button onclick="showSubInfo('EmotionTimeline')">Emotion Timeline</button>
+      <button id="btn1" onclick="showSubInfo('FeelingsMap')">Map of Feelings</button>
+      <button id="btn1" onclick="showSubInfo('TriggersPatterns')">Triggers & Patterns</button>
+      <button id="btn1" onclick="showSubInfo('ActionSteps')">Action steps</button>
+      <button id="btn1" onclick="showSubInfo('OppositeEmotionMap')">Opposite Emotion Map</button>
+      <button id="btn1" onclick="showSubInfo('EmotionTimeline')">Emotion Timeline</button>
 
     `
   },
@@ -98,9 +98,9 @@ const nodes = [
     y: 300,
     info: `
       <p>What helps you feel calmer, safer, or more supported?</p>
-      <button onclick="showSubInfo('forAnxiety')">For Anxiety</button>
-      <button onclick="showSubInfo('forSadness')">For Sadness</button>
-      <button onclick="showSubInfo('forexhaustion')">For Exhaustion</button>
+      <button id="btn1" onclick="showSubInfo('forAnxiety')">For Anxiety</button>
+      <button id="btn1" onclick="showSubInfo('forSadness')">For Sadness</button>
+      <button id="btn1" onclick="showSubInfo('forexhaustion')">For Exhaustion</button>
     `
   }
 ];
