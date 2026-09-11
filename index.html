@@ -1,34 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="https://unpkg.com/brainmap.js/brainmap.css">
-  <style>
-    body { margin: 0; background: #111; }
-    #mindmap { width: 100vw; height: 100vh; }
-  </style>
+  <meta charset="UTF-8">
+  <title>Mindmap</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div id="mindmap"></div>
+  <div class="node" id="node1">Idea 1</div>
+  <div class="node" id="node2">Idea 2</div>
 
-  <script src="https://unpkg.com/brainmap.js/brainmap.js"></script>
-  <script>
-    const map = new MindMap('#mindmap', {
-      width: window.innerWidth,
-      height: window.innerHeight,
-      editable: true,
-      theme: 'dark'
-    });
+<button id="addNodeBtn">Add Node</button>
 
-    map.setData({
-      id: 'root',
-      name: 'My Brainstorm',
-      children: [
-        { id: 'feelings', name: 'Feelings' },
-        { id: 'goals', name: 'Goals' },
-        { id: 'ideas', name: 'Ideas' }
-      ]
-    });
-  </script>
+<div id="mapArea">
+  <!-- nodes will appear here -->
+</div>
+
+
+
+  <script src="script.js"></script>
 </body>
 </html>

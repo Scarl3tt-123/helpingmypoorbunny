@@ -1,0 +1,9 @@
+.node {
+  position: absolute;
+  padding: 12px 18px;
+  background: #4a4a4a;
+  color: white;
+  border-radius: 10px;
+  cursor: grab;
+  user-select: none;
+}
