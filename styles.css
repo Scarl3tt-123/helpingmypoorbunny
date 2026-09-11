@@ -122,3 +122,22 @@ p {
 .hidden {
   display: none;
 }
+
+
+#connections {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* so clicks go to nodes */
+}
+
+.node {
+  position: absolute;
+  padding: 12px 18px;
+  background: #4a4a4a;
+  color: white;
+  border-radius: 10px;
+  cursor: grab;
+  user-select: none;
+  z-index: 10;
+}
