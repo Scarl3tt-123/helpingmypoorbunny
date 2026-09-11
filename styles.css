@@ -1,18 +1,5 @@
 
 #addNodeBtn {
-  position: fixed;
-  top: 20px;
-  left: 10px;
-  padding: 10px 15px;
-  background: #6a6a6a;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-#addNodeBtn {
   padding: 10px 15px;
   background: #356859;
   color: white;
