@@ -1,55 +1,36 @@
 function makeDraggable(el) {
-  let isDown = false;
-  let offsetX = 0;
-  let offsetY = 0;
+  let offsetX;
+  let offsetY;
 
-  el.addEventListener('mousedown', e => {
-    isDown = true;
-    offsetX = e.clientX - el.offsetLeft;
-    offsetY = e.clientY - el.offsetTop;
-    el.style.cursor = 'grabbing';
-  });
+  el.addEventListener('pointerdown', event => {
+    const mapBounds = mapArea.getBoundingClientRect();
+    const nodeBounds = el.getBoundingClientRect();
 
-  document.addEventListener('mouseup', () => {
-    isDown = false;
-    el.style.cursor = 'grab';
-  });
+    el.setPointerCapture(event.pointerId);
+    el.classList.add('dragging');
+    offsetX = event.clientX - nodeBounds.left;
+    offsetY = event.clientY - nodeBounds.top;
 
-  document.addEventListener('mousemove', e => {
-    if (!isDown) return;
-    el.style.left = (e.clientX - offsetX) + 'px';
-    el.style.top = (e.clientY - offsetY) + 'px';
-  });
-}
+    const moveNode = moveEvent => {
+      el.style.left = `${moveEvent.clientX - mapBounds.left - offsetX}px`;
+      el.style.top = `${moveEvent.clientY - mapBounds.top - offsetY}px`;
+    };
 
-makeDraggable(document.getElementById('node1'));
-makeDraggable(document.getElementById('node2'));
+    const stopDragging = () => {
+      el.classList.remove('dragging');
+      el.removeEventListener('pointermove', moveNode);
+      el.removeEventListener('pointerup', stopDragging);
+      el.removeEventListener('pointercancel', stopDragging);
+    };
 
-let nodeCount = 0;
-
-function makeDraggable(el) {
-  let isDown = false;
-  let offsetX = 0;
-  let offsetY = 0;
-
-  el.addEventListener('mousedown', e => {
-    isDown = true;
-    offsetX = e.clientX - el.offsetLeft;
-    offsetY = e.clientY - el.offsetTop;
-    el.style.cursor = 'grabbing';
-  });
-
-  document.addEventListener('mouseup', () => {
-    isDown = false;
-    el.style.cursor = 'grab';
-  });
-
-  document.addEventListener('mousemove', e => {
-    if (!isDown) return;
-    el.style.left = (e.clientX - offsetX) + 'px';
-    el.style.top = (e.clientY - offsetY) + 'px';
+    el.addEventListener('pointermove', moveNode);
+    el.addEventListener('pointerup', stopDragging);
+    el.addEventListener('pointercancel', stopDragging);
   });
 }
+
+const mapArea = document.getElementById('mapArea');
+let nodeCount = mapArea.querySelectorAll('.node').length;
 
 function createNode() {
   nodeCount++;
@@ -57,30 +38,38 @@ function createNode() {
   const node = document.createElement('div');
   node.classList.add('node');
   node.id = 'node' + nodeCount;
-  node.textContent = 'Node ' + nodeCount;
+  node.textContent = 'New thought';
+  node.contentEditable = 'true';
+  node.setAttribute('role', 'textbox');
 
-  // random starting position
-  node.style.left = (100 + Math.random() * 300) + 'px';
-  node.style.top = (100 + Math.random() * 300) + 'px';
+  node.style.left = `${80 + (nodeCount % 4) * 150}px`;
+  node.style.top = `${100 + Math.floor(nodeCount / 4) * 90}px`;
 
-  document.getElementById('mapArea').appendChild(node);
+  mapArea.appendChild(node);
 
   makeDraggable(node);
+  node.focus();
 }
 
 document.getElementById('addNodeBtn').addEventListener('click', createNode);
 
-document.getElementById('mapArea').addEventListener('dblclick', e => {
+mapArea.addEventListener('dblclick', event => {
   nodeCount++;
 
   const node = document.createElement('div');
   node.classList.add('node');
   node.id = 'node' + nodeCount;
-  node.textContent = 'Node ' + nodeCount;
+  node.textContent = 'New thought';
+  node.contentEditable = 'true';
+  node.setAttribute('role', 'textbox');
 
-  node.style.left = e.clientX + 'px';
-  node.style.top = e.clientY + 'px';
+  const mapBounds = mapArea.getBoundingClientRect();
+  node.style.left = `${event.clientX - mapBounds.left}px`;
+  node.style.top = `${event.clientY - mapBounds.top}px`;
 
-  document.getElementById('mapArea').appendChild(node);
+  mapArea.appendChild(node);
   makeDraggable(node);
+  node.focus();
 });
+
+mapArea.querySelectorAll('.node').forEach(makeDraggable);

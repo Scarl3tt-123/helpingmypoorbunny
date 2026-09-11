@@ -12,18 +12,92 @@
   z-index: 1000;
 }
 
+#addNodeBtn {
+  padding: 10px 15px;
+  background: #356859;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+#addNodeBtn:hover {
+  background: #244d40;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: #20302a;
+  background: #eef4ef;
+  font-family: Georgia, serif;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 28px;
+  background: #fffdf7;
+  border-bottom: 1px solid #d4dfd6;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+p {
+  margin-top: 4px;
+  color: #60716a;
+  font-size: 14px;
+}
+
 #mapArea {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: calc(100vh - 91px);
+  min-height: 480px;
   position: relative;
+  overflow: hidden;
+  background-color: #eef4ef;
+  background-image: radial-gradient(#c8d8cc 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
 .node {
   position: absolute;
+  min-width: 150px;
+  max-width: 220px;
   padding: 12px 18px;
-  background: #4a4a4a;
+  background: #fffdf7;
+  border: 2px solid #6da18a;
+  box-shadow: 3px 4px 0 #c5d8ca;
   color: white;
+  color: #20302a;
   border-radius: 10px;
   cursor: grab;
   user-select: none;
+  touch-action: none;
+  overflow-wrap: anywhere;
+}
+
+.node:focus {
+  outline: 3px solid #e8ad53;
+  outline-offset: 2px;
+}
+
+.node.dragging {
+  cursor: grabbing;
+  opacity: 0.8;
 }

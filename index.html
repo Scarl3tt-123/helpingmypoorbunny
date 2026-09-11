@@ -2,19 +2,24 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Mindmap</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-help mind map</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <div class="node" id="node1">Idea 1</div>
-  <div class="node" id="node2">Idea 2</div>
+  <header class="toolbar">
+    <div>
+      <h1>Self-help mind map</h1>
+      <p>Move ideas around, edit their text, and double-click the canvas to add a thought.</p>
+    </div>
+    <button id="addNodeBtn" type="button">Add thought</button>
+  </header>
 
-<button id="addNodeBtn">Add Node</button>
-
-<div id="mapArea">
-  <!-- nodes will appear here -->
-</div>
+  <main id="mapArea" aria-label="Mind map">
+    <div class="node" id="node1" contenteditable="true" role="textbox">What am I feeling?</div>
+    <div class="node" id="node2" contenteditable="true" role="textbox">What might help?</div>
+  </main>
 
 
 
