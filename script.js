@@ -155,4 +155,11 @@ function showSubInfo(type) {
       <p>Here are some ways to cope with sadness...</p>
     `;
   }
+
+  if (type === 'forexhaustion') {
+    content.innerHTML = `
+      <h3>For Exhaustion</h3>
+      <p>Here are some strategies to deal with exhaustion...</p>
+    `;
+  }
 }
