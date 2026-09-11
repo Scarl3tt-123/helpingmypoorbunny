@@ -117,10 +117,11 @@ p {
 
 #infoPanel.show {
   transform: translateX(0);
+  visibility: visible;
 }
 
 .hidden {
-  display: none;
+  visibility: hidden;
 }
 
 

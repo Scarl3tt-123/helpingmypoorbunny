@@ -136,11 +136,38 @@ function showSubInfo(type) {
 
   if (type === 'FeelingsMap') {
     content.innerHTML = `
-     
+      <h3>Map of Feelings</h3>
+      <p>Name the feeling, notice where it appears in your body, and rate its intensity from 1 to 10.</p>
     `;
   }
 
-  
+  if (type === 'TriggersPatterns') {
+    content.innerHTML = `
+      <h3>Triggers &amp; Patterns</h3>
+      <p>What happened just before the feeling? Look for repeated places, people, thoughts, or times of day.</p>
+    `;
+  }
+
+  if (type === 'ActionSteps') {
+    content.innerHTML = `
+      <h3>Action Steps</h3>
+      <p>Choose one small action you can take in the next ten minutes: breathe, drink water, move, write, or ask for support.</p>
+    `;
+  }
+
+  if (type === 'OppositeEmotionMap') {
+    content.innerHTML = `
+      <h3>Opposite Emotion Map</h3>
+      <p>What would be a gentler or more helpful response to this feeling? Pick a response that is possible, not perfect.</p>
+    `;
+  }
+
+  if (type === 'EmotionTimeline') {
+    content.innerHTML = `
+      <h3>Emotion Timeline</h3>
+      <p>Write what you felt before, during, and after the moment. Note what changed and what helped, even a little.</p>
+    `;
+  }
 
   if (type === 'forAnxiety') {
     content.innerHTML = `
