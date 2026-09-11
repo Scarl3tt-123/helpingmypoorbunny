@@ -101,3 +101,24 @@ p {
   cursor: grabbing;
   opacity: 0.8;
 }
+#infoPanel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  background: #222;
+  color: white;
+  padding: 20px;
+  box-shadow: -4px 0 10px rgba(0,0,0,0.4);
+  transform: translateX(100%);
+  transition: 0.3s;
+}
+
+#infoPanel.show {
+  transform: translateX(0);
+}
+
+.hidden {
+  display: none;
+}

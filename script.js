@@ -73,3 +73,78 @@ mapArea.addEventListener('dblclick', event => {
 });
 
 mapArea.querySelectorAll('.node').forEach(makeDraggable);
+const nodes = [
+  {
+    id: "grandma",
+    label: "Grandma",
+    x: 200,
+    y: 150,
+    info: `
+      <p>Born: 1950</p>
+      <p>Hobbies: Gardening, knitting</p>
+      <button onclick="showSubInfo('grandmaBio')">Biography</button>
+      <button onclick="showSubInfo('grandmaStories')">Stories</button>
+    `
+  },
+  {
+    id: "uncle",
+    label: "Uncle John",
+    x: 400,
+    y: 300,
+    info: `
+      <p>Born: 1975</p>
+      <p>Occupation: Mechanic</p>
+      <button onclick="showSubInfo('uncleCars')">Car Projects</button>
+    `
+  }
+];
+nodes.forEach(node => {
+  const el = document.createElement('div');
+  el.classList.add('node');
+  el.id = node.id;
+  el.textContent = node.label;
+
+  el.style.left = node.x + 'px';
+  el.style.top = node.y + 'px';
+
+  el.addEventListener('click', () => openPanel(node));
+
+  document.getElementById('mapArea').appendChild(el);
+
+  makeDraggable(el);
+});
+function openPanel(node) {
+  document.getElementById('panelTitle').textContent = node.label;
+  document.getElementById('panelContent').innerHTML = node.info;
+
+  const panel = document.getElementById('infoPanel');
+  panel.classList.add('show');
+}
+
+document.getElementById('closePanel').addEventListener('click', () => {
+  document.getElementById('infoPanel').classList.remove('show');
+});
+function showSubInfo(type) {
+  const content = document.getElementById('panelContent');
+
+  if (type === 'grandmaBio') {
+    content.innerHTML = `
+      <h3>Biography</h3>
+      <p>She grew up in a small village...</p>
+    `;
+  }
+
+  if (type === 'grandmaStories') {
+    content.innerHTML = `
+      <h3>Stories</h3>
+      <p>She once rescued a stray cat...</p>
+    `;
+  }
+
+  if (type === 'uncleCars') {
+    content.innerHTML = `
+      <h3>Car Projects</h3>
+      <p>He rebuilt a 1998 Honda Civic...</p>
+    `;
+  }
+}
