@@ -75,26 +75,33 @@ mapArea.addEventListener('dblclick', event => {
 mapArea.querySelectorAll('.node').forEach(makeDraggable);
 const nodes = [
   {
-    id: "grandma",
-    label: "Grandma",
+    id: "Feelings",
+    label: "Feelings",
     x: 200,
     y: 150,
     info: `
-      <p>Born: 1950</p>
-      <p>Hobbies: Gardening, knitting</p>
-      <button onclick="showSubInfo('grandmaBio')">Biography</button>
-      <button onclick="showSubInfo('grandmaStories')">Stories</button>
+      <p>1) think about what are you feeling</p>
+      <p>2) why are you feeling this way</p>
+      <p>3) what can you do to feel better</p>
+      <button onclick="showSubInfo('FeelingsMap')">Map of Feelings</button>
+      <button onclick="showSubInfo('TriggersPatterns')">Triggers & Patterns</button>
+      <button onclick="showSubInfo('ActionSteps')">Action steps</button>
+      <button onclick="showSubInfo('OppositeEmotionMap')">Opposite Emotion Map</button>
+      <button onclick="showSubInfo('EmotionTimeline')">Emotion Timeline</button>
+
     `
   },
   {
-    id: "uncle",
-    label: "Uncle John",
+    id: "comforts",
+    label: "comforts",
     x: 400,
     y: 300,
     info: `
       <p>Born: 1975</p>
       <p>Occupation: Mechanic</p>
-      <button onclick="showSubInfo('uncleCars')">Car Projects</button>
+      <button onclick="showSubInfo('forAnxiety')">For Anxiety</button>
+      <button onclick="showSubInfo('forSadness')">For Sadness</button>
+      <button onclick="showSubInfo('forexhaustion')">For Exhaustion</button>
     `
   }
 ];
@@ -127,24 +134,25 @@ document.getElementById('closePanel').addEventListener('click', () => {
 function showSubInfo(type) {
   const content = document.getElementById('panelContent');
 
-  if (type === 'grandmaBio') {
+  if (type === 'FeelingsMap') {
     content.innerHTML = `
-      <h3>Biography</h3>
-      <p>She grew up in a small village...</p>
+     
     `;
   }
 
-  if (type === 'grandmaStories') {
+  
+
+  if (type === 'forAnxiety') {
     content.innerHTML = `
-      <h3>Stories</h3>
-      <p>She once rescued a stray cat...</p>
+      <h3>For Anxiety</h3>
+      <p>Here are some techniques to manage anxiety...</p>
     `;
   }
 
-  if (type === 'uncleCars') {
+  if (type === 'forSadness') {
     content.innerHTML = `
-      <h3>Car Projects</h3>
-      <p>He rebuilt a 1998 Honda Civic...</p>
+      <h3>For Sadness</h3>
+      <p>Here are some ways to cope with sadness...</p>
     `;
   }
 }
