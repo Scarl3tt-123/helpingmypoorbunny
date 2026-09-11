@@ -93,12 +93,11 @@ const nodes = [
   },
   {
     id: "comforts",
-    label: "comforts",
+    label: "Comforts",
     x: 400,
     y: 300,
     info: `
-      <p>Born: 1975</p>
-      <p>Occupation: Mechanic</p>
+      <p>What helps you feel calmer, safer, or more supported?</p>
       <button onclick="showSubInfo('forAnxiety')">For Anxiety</button>
       <button onclick="showSubInfo('forSadness')">For Sadness</button>
       <button onclick="showSubInfo('forexhaustion')">For Exhaustion</button>
