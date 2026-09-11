@@ -1,6 +1,8 @@
 function makeDraggable(el) {
   let offsetX;
   let offsetY;
+  let dragged = false;
+  let suppressClick = false;
 
   el.addEventListener('pointerdown', event => {
     const mapBounds = mapArea.getBoundingClientRect();
@@ -8,16 +10,24 @@ function makeDraggable(el) {
 
     el.setPointerCapture(event.pointerId);
     el.classList.add('dragging');
+    dragged = false;
     offsetX = event.clientX - nodeBounds.left;
     offsetY = event.clientY - nodeBounds.top;
 
     const moveNode = moveEvent => {
+      dragged = true;
       el.style.left = `${moveEvent.clientX - mapBounds.left - offsetX}px`;
       el.style.top = `${moveEvent.clientY - mapBounds.top - offsetY}px`;
     };
 
     const stopDragging = () => {
       el.classList.remove('dragging');
+      if (dragged) {
+        suppressClick = true;
+        setTimeout(() => {
+          suppressClick = false;
+        }, 0);
+      }
       el.removeEventListener('pointermove', moveNode);
       el.removeEventListener('pointerup', stopDragging);
       el.removeEventListener('pointercancel', stopDragging);
@@ -26,6 +36,13 @@ function makeDraggable(el) {
     el.addEventListener('pointermove', moveNode);
     el.addEventListener('pointerup', stopDragging);
     el.addEventListener('pointercancel', stopDragging);
+  });
+
+  el.addEventListener('click', event => {
+    if (suppressClick) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
   });
 }
 
@@ -54,6 +71,10 @@ function createNode() {
 document.getElementById('addNodeBtn').addEventListener('click', createNode);
 
 mapArea.addEventListener('dblclick', event => {
+  if (event.target instanceof Element && event.target.closest('.node')) {
+    return;
+  }
+
   nodeCount++;
 
   const node = document.createElement('div');
@@ -64,8 +85,8 @@ mapArea.addEventListener('dblclick', event => {
   node.setAttribute('role', 'textbox');
 
   const mapBounds = mapArea.getBoundingClientRect();
-  node.style.left = `${event.clientX - mapBounds.left}px`;
-  node.style.top = `${event.clientY - mapBounds.top}px`;
+  node.style.left = `${event.clientX - mapBounds.left + mapArea.scrollLeft}px`;
+  node.style.top = `${event.clientY - mapBounds.top + mapArea.scrollTop}px`;
 
   mapArea.appendChild(node);
   makeDraggable(node);
@@ -83,11 +104,11 @@ const nodes = [
       <p>1) think about what are you feeling</p>
       <p>2) why are you feeling this way</p>
       <p>3) what can you do to feel better</p>
-      <button id="btn1" onclick="showSubInfo('FeelingsMap')">Map of Feelings</button>
-      <button id="btn1" onclick="showSubInfo('TriggersPatterns')">Triggers & Patterns</button>
-      <button id="btn1" onclick="showSubInfo('ActionSteps')">Action steps</button>
-      <button id="btn1" onclick="showSubInfo('OppositeEmotionMap')">Opposite Emotion Map</button>
-      <button id="btn1" onclick="showSubInfo('EmotionTimeline')">Emotion Timeline</button>
+      <button class="panel-button" onclick="showSubInfo('FeelingsMap')">Map of Feelings</button>
+      <button class="panel-button" onclick="showSubInfo('TriggersPatterns')">Triggers & Patterns</button>
+      <button class="panel-button" onclick="showSubInfo('ActionSteps')">Action steps</button>
+      <button class="panel-button" onclick="showSubInfo('OppositeEmotionMap')">Opposite Emotion Map</button>
+      <button class="panel-button" onclick="showSubInfo('EmotionTimeline')">Emotion Timeline</button>
 
     `
   },
@@ -98,9 +119,9 @@ const nodes = [
     y: 300,
     info: `
       <p>What helps you feel calmer, safer, or more supported?</p>
-      <button id="btn1" onclick="showSubInfo('forAnxiety')">For Anxiety</button>
-      <button id="btn1" onclick="showSubInfo('forSadness')">For Sadness</button>
-      <button id="btn1" onclick="showSubInfo('forexhaustion')">For Exhaustion</button>
+      <button class="panel-button" onclick="showSubInfo('forAnxiety')">For Anxiety</button>
+      <button class="panel-button" onclick="showSubInfo('forSadness')">For Sadness</button>
+      <button class="panel-button" onclick="showSubInfo('forexhaustion')">For Exhaustion</button>
     `
   }
 ];
