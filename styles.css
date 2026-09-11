@@ -4,8 +4,8 @@
   display: block;
   margin-top: 20px;
   padding: 10px 15px;
-  background: #356859;
-  color: white;
+  background: #422e25;
+  color: rgb(252, 245, 243);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -14,7 +14,7 @@
 }
 
 #addNodeBtn:hover {
-  background: #244d40;
+  background: #2f2520;
 }
 
 * {
@@ -25,7 +25,7 @@ body {
   margin: 0;
   min-width: 320px;
   color: #20302a;
-  background: #eef4ef;
+  background: #f4f0ee;
   font-family: Georgia, serif;
 }
 
@@ -50,7 +50,7 @@ h1 {
 
 p {
   margin-top: 4px;
-  color: #60716a;
+  color: #716460;
   font-size: 14px;
 }
 
@@ -74,7 +74,7 @@ p {
   border: 2px solid #6da18a;
   box-shadow: 3px 4px 0 #c5d8ca;
   color: white;
-  color: #20302a;
+  color: #423025;
   border-radius: 10px;
   cursor: grab;
   user-select: none;
@@ -83,7 +83,7 @@ p {
 }
 
 .node:focus {
-  outline: 3px solid #e8ad53;
+  outline: 3px solid #e88a53;
   outline-offset: 2px;
 }
 
@@ -97,7 +97,7 @@ p {
   top: 0;
   width: 300px;
   height: 100vh;
-  background: #222;
+  background: #b7743d;
   color: white;
   padding: 20px;
   box-shadow: -4px 0 10px rgba(0,0,0,0.4);
@@ -122,13 +122,4 @@ p {
   pointer-events: none; /* so clicks go to nodes */
 }
 
-.node {
-  position: absolute;
-  padding: 12px 18px;
-  background: #4a4a4a;
-  color: white;
-  border-radius: 10px;
-  cursor: grab;
-  user-select: none;
-  z-index: 10;
-}
+
